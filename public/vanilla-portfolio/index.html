@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anil Jakkula -- 3D Creator</title>
+  
+  <!-- Manifest & Favicons -->
+  <link rel="manifest" href="./manifest.json">
+  <meta name="theme-color" content="#0C0C0C">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Anil Jakkula">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <!-- Google Fonts - Kanit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN v3 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandDark: '#0C0C0C',
+            brandLight: '#D7E2EA',
+          },
+          fontFamily: {
+            sans: ['Kanit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style type="text/css">
+    html, body {
+      background-color: #0C0C0C;
+      color: #D7E2EA;
+      font-family: 'Kanit', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    .hero-heading {
+      background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .magnet-wrap {
+      display: inline-block;
+      will-change: transform;
+      transition: transform 0.6s ease-in-out;
+    }
+
+    .animated-reveal-text .char {
+      opacity: 0.2;
+      display: inline-block;
+      transition: opacity 0.05s ease;
+    }
+
+    /* Stacking card styles */
+    .project-card-container {
+      height: 85vh;
+      position: sticky;
+    }
+
+    .project-card {
+      will-change: transform;
+      transform-origin: center top;
+      transition: transform 0.1s linear;
+    }
+
+    /* Scroll animations */
+    .fade-in-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .fade-in-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-brandDark text-brandLight select-none">
+
+  <!-- Main Wrapper -->
+  <div class="overflow-x-clip w-full relative">
+
+    <!-- 1. HERO SECTION -->
+    <section class="relative h-screen flex flex-col justify-between px-6 md:px-10 pb-7 sm:pb-8 md:pb-10 bg-brandDark">
+      <!-- Navbar -->
+      <nav class="w-full flex justify-between items-center pt-6 md:pt-8 z-30 fade-in-on-scroll" data-delay="0" data-y="-20">
+        <a href="#about" class="text-brandLight font-medium uppercase tracking-wider text-xs sm:text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200">About</a>
+        <a href="#services" class="text-brandLight font-medium uppercase tracking-wider text-xs sm:text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200">Price</a>
+        <a href="#projects" class="text-brandLight font-medium uppercase tracking-wider text-xs sm:text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200">Projects</a>
+        <a href="#contact" class="text-brandLight font-medium uppercase tracking-wider text-xs sm:text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200">Contact</a>
+      </nav>
+
+      <!-- Hero Heading -->
+      <div class="w-full flex-1 flex flex-col justify-center relative z-20 overflow-hidden">
+        <div class="fade-in-on-scroll" data-delay="0.15" data-y="40">
+          <h1 class="hero-heading font-black uppercase tracking-tight leading-[0.85] whitespace-nowrap w-full text-[10vw] sm:text-[11vw] md:text-[12vw] lg:text-[13vw] mt-6 sm:mt-4 md:-mt-5 text-center">
+            Hi, i&apos;m anil jakkula
+          </h1>
+        </div>
+      </div>
+
+      <!-- Hero Portrait (Magnet & Absolute Centered) -->
+      <div class="absolute left-1/2 -translate-x-1/2 z-10 top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0 pointer-events-auto fade-in-on-scroll" data-delay="0.6" data-y="30">
+        <div class="magnet-wrap" data-strength="3" data-padding="150">
+          <div class="relative w-[280px] sm:w-[340px] md:w-[410px] lg:w-[490px] aspect-[1/1.25] overflow-hidden drop-shadow-[0_15px_30px_rgba(0,0,0,0.8)]">
+            <img
+              src="https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png"
+              alt="Anil Jakkula Portrait"
+              class="w-full h-full object-contain object-bottom select-none pointer-events-none"
+              referrerpolicy="no-referrer"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="w-full flex justify-between items-end relative z-20">
+        <div class="text-left fade-in-on-scroll" data-delay="0.35" data-y="20">
+          <p class="text-brandLight font-light uppercase tracking-wide leading-snug max-w-[150px] sm:max-w-[210px] md:max-w-[250px] text-[clamp(0.75rem,1.3vw,1.35rem)]">
+            a 3d creator driven by crafting striking and unforgettable projects
+          </p>
+        </div>
+
+        <div class="fade-in-on-scroll" data-delay="0.5" data-y="20">
+          <button
+            onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })"
+            style="background: linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%); boxShadow: 0px 4px 4px rgba(181, 1, 167, 0.25), inset 4px 4px 12px #7721B1; outline: 2px solid #FFFFFF; outlineOffset: -3px;"
+            class="rounded-full text-white font-medium uppercase tracking-widest transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-[10px] sm:text-xs md:text-sm lg:text-base"
+          >
+            Contact Me
+          </button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 2. MARQUEE SECTION -->
+    <section class="marquee-section bg-brandDark pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden w-full select-none">
+      <div class="flex flex-col gap-3 w-full">
+        <!-- Row 1 -->
+        <div class="w-full overflow-hidden">
+          <div class="marquee-row-1 flex gap-3 w-max will-change-transform transition-transform ease-out duration-100">
+            <!-- Tripled marquee links -->
+            <div class="flex gap-3 shrink-0">
+              <img src="https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-vex-ventures-preview-BczMFIiw.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-vitara-preview-Cjz2QYyU.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-terra-preview-BFjrCr7T.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-skyelite-preview-DHaZIgUv.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-aethera-preview-DknSlcTa.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-designpro-preview-D8c5_een.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+            </div>
+            <div class="flex gap-3 shrink-0">
+              <img src="https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-vex-ventures-preview-BczMFIiw.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-vitara-preview-Cjz2QYyU.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-terra-preview-BFjrCr7T.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-skyelite-preview-DHaZIgUv.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-aethera-preview-DknSlcTa.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-designpro-preview-D8c5_een.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+            </div>
+            <div class="flex gap-3 shrink-0">
+              <img src="https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-vex-ventures-preview-BczMFIiw.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-vitara-preview-Cjz2QYyU.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-terra-preview-BFjrCr7T.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-skyelite-preview-DHaZIgUv.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-aethera-preview-DknSlcTa.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-designpro-preview-D8c5_een.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="w-full overflow-hidden">
+          <div class="marquee-row-2 flex gap-3 w-max will-change-transform transition-transform ease-out duration-100">
+            <div class="flex gap-3 shrink-0">
+              <img src="https://motionsites.ai/assets/hero-stellar-ai-preview-D3HL6bw1.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-xportfolio-preview-D4A8maiC.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-planet-orbit-preview-DWAP8Z1P.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-new-era-preview-CocuDUm9.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+            </div>
+            <div class="flex gap-3 shrink-0">
+              <img src="https://motionsites.ai/assets/hero-stellar-ai-preview-D3HL6bw1.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-xportfolio-preview-D4A8maiC.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-planet-orbit-preview-DWAP8Z1P.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-new-era-preview-CocuDUm9.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+            </div>
+            <div class="flex gap-3 shrink-0">
+              <img src="https://motionsites.ai/assets/hero-stellar-ai-preview-D3HL6bw1.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-xportfolio-preview-D4A8maiC.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-planet-orbit-preview-DWAP8Z1P.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-new-era-preview-CocuDUm9.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+              <img src="https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif" class="w-[280px] h-[180px] sm:w-[350px] sm:h-[225px] md:w-[420px] md:h-[270px] shrink-0 object-cover rounded-2xl bg-zinc-900 border border-white/5" referrerpolicy="no-referrer" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 3. ABOUT SECTION -->
+    <section id="about" class="relative min-h-screen flex flex-col items-center justify-center bg-brandDark px-5 sm:px-8 md:px-10 py-20 overflow-hidden select-none z-10">
+      
+      <!-- Decorative Images -->
+      <div class="absolute top-[4%] left-[1%] sm:left-[2%] md:left-[4%] w-[120px] sm:w-[160px] md:w-[210px] aspect-square z-0 fade-in-on-scroll" data-delay="0.1" data-x="-80">
+        <img src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png" class="w-full h-full object-contain pointer-events-none" referrerpolicy="no-referrer" />
+      </div>
+
+      <div class="absolute bottom-[8%] left-[3%] sm:left-[6%] md:left-[10%] w-[100px] sm:w-[140px] md:w-[180px] aspect-square z-0 fade-in-on-scroll" data-delay="0.25" data-x="-80">
+        <img src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/p59_1.4659672e.png" class="w-full h-full object-contain pointer-events-none" referrerpolicy="no-referrer" />
+      </div>
+
+      <div class="absolute top-[4%] right-[1%] sm:right-[2%] md:right-[4%] w-[120px] sm:w-[160px] md:w-[210px] aspect-square z-0 fade-in-on-scroll" data-delay="0.15" data-x="80">
+        <img src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/lego_icon-1.703bb594.png" class="w-full h-full object-contain pointer-events-none" referrerpolicy="no-referrer" />
+      </div>
+
+      <div class="absolute bottom-[8%] right-[3%] sm:right-[6%] md:right-[10%] w-[130px] sm:w-[170px] md:w-[220px] aspect-square z-0 fade-in-on-scroll" data-delay="0.3" data-x="80">
+        <img src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png" class="w-full h-full object-contain pointer-events-none" referrerpolicy="no-referrer" />
+      </div>
+
+      <div class="relative z-10 flex flex-col items-center max-w-3xl mx-auto">
+        <div class="w-full text-center fade-in-on-scroll" data-delay="0" data-y="40">
+          <h2 style="font-size: clamp(3rem, 12vw, 10rem);" class="hero-heading font-black uppercase leading-none tracking-tight mb-10 sm:mb-14 md:mb-16">
+            About me
+          </h2>
+        </div>
+
+        <div class="w-full max-w-[560px] mx-auto text-[#D7E2EA] font-medium leading-relaxed mb-16 sm:mb-20 md:mb-24">
+          <p class="animated-reveal-text text-center text-[clamp(1rem,2vw,1.35rem)]">
+            With more than five years of experience in design, i focus on branding, web design, and user experience, i truly enjoy working with businesses that aim to stand out and present their best image. Let's build something incredible together!
+          </p>
+        </div>
+
+        <div class="fade-in-on-scroll" data-delay="0.2" data-y="20">
+          <button
+            onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })"
+            style="background: linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%); boxShadow: 0px 4px 4px rgba(181, 1, 167, 0.25), inset 4px 4px 12px #7721B1; outline: 2px solid #FFFFFF; outlineOffset: -3px;"
+            class="rounded-full text-white font-medium uppercase tracking-widest transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-[10px] sm:text-xs md:text-sm lg:text-base"
+          >
+            Contact Me
+          </button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 4. SERVICES SECTION -->
+    <section id="services" class="bg-white text-brandDark rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32 relative z-20 select-none">
+      <div class="max-w-5xl mx-auto flex flex-col items-center">
+        
+        <div class="w-full text-center fade-in-on-scroll" data-delay="0" data-y="40">
+          <h2 style="font-size: clamp(3rem, 12vw, 10rem);" class="font-black uppercase leading-none tracking-tight text-brandDark mb-16 sm:mb-20 md:mb-28">
+            Services
+          </h2>
+        </div>
+
+        <!-- Services List -->
+        <div class="w-full border-t border-[rgba(12,12,12,0.15)]">
+          
+          <!-- Item 1 -->
+          <div class="w-full fade-in-on-scroll" data-delay="0.0">
+            <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-10 py-8 sm:py-10 md:py-12 border-b border-[rgba(12,12,12,0.15)] w-full text-left">
+              <div style="font-size: clamp(3rem, 10vw, 140px);" class="font-black text-brandDark leading-none shrink-0 sm:min-w-[140px]">01</div>
+              <div class="flex flex-col flex-1 gap-2">
+                <h3 style="font-size: clamp(1.1rem, 2.2vw, 2.1rem);" class="font-semibold uppercase text-brandDark">3D Modeling</h3>
+                <p style="font-size: clamp(0.85rem, 1.6vw, 1.25rem);" class="font-light leading-relaxed max-w-2xl text-brandDark/70">Creation of detailed objects, characters, or environments tailored to specific client needs, ideal for games, products, and visualizations.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="w-full fade-in-on-scroll" data-delay="0.1">
+            <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-10 py-8 sm:py-10 md:py-12 border-b border-[rgba(12,12,12,0.15)] w-full text-left">
+              <div style="font-size: clamp(3rem, 10vw, 140px);" class="font-black text-brandDark leading-none shrink-0 sm:min-w-[140px]">02</div>
+              <div class="flex flex-col flex-1 gap-2">
+                <h3 style="font-size: clamp(1.1rem, 2.2vw, 2.1rem);" class="font-semibold uppercase text-brandDark">Rendering</h3>
+                <p style="font-size: clamp(0.85rem, 1.6vw, 1.25rem);" class="font-light leading-relaxed max-w-2xl text-brandDark/70">High-quality, photorealistic renders that showcase designs with custom lighting, textures, and materials to bring concepts to life.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="w-full fade-in-on-scroll" data-delay="0.2">
+            <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-10 py-8 sm:py-10 md:py-12 border-b border-[rgba(12,12,12,0.15)] w-full text-left">
+              <div style="font-size: clamp(3rem, 10vw, 140px);" class="font-black text-brandDark leading-none shrink-0 sm:min-w-[140px]">03</div>
+              <div class="flex flex-col flex-1 gap-2">
+                <h3 style="font-size: clamp(1.1rem, 2.2vw, 2.1rem);" class="font-semibold uppercase text-brandDark">Motion Design</h3>
+                <p style="font-size: clamp(0.85rem, 1.6vw, 1.25rem);" class="font-light leading-relaxed max-w-2xl text-brandDark/70">Dynamic animations and motion graphics that add energy and storytelling to brands, products, and digital experiences.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="w-full fade-in-on-scroll" data-delay="0.3">
+            <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-10 py-8 sm:py-10 md:py-12 border-b border-[rgba(12,12,12,0.15)] w-full text-left">
+              <div style="font-size: clamp(3rem, 10vw, 140px);" class="font-black text-brandDark leading-none shrink-0 sm:min-w-[140px]">04</div>
+              <div class="flex flex-col flex-1 gap-2">
+                <h3 style="font-size: clamp(1.1rem, 2.2vw, 2.1rem);" class="font-semibold uppercase text-brandDark">Branding</h3>
+                <p style="font-size: clamp(0.85rem, 1.6vw, 1.25rem);" class="font-light leading-relaxed max-w-2xl text-brandDark/70">Crafting cohesive visual identities -- from logos to full brand systems -- that communicate a clear and memorable presence.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="w-full fade-in-on-scroll" data-delay="0.4">
+            <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-10 py-8 sm:py-10 md:py-12 border-b border-[rgba(12,12,12,0.15)] w-full text-left">
+              <div style="font-size: clamp(3rem, 10vw, 140px);" class="font-black text-brandDark leading-none shrink-0 sm:min-w-[140px]">05</div>
+              <div class="flex flex-col flex-1 gap-2">
+                <h3 style="font-size: clamp(1.1rem, 2.2vw, 2.1rem);" class="font-semibold uppercase text-brandDark">Web Design</h3>
+                <p style="font-size: clamp(0.85rem, 1.6vw, 1.25rem);" class="font-light leading-relaxed max-w-2xl text-brandDark/70">Designing clean, modern, and conversion-focused websites with attention to layout, typography, and user experience.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 5. PROJECTS SECTION -->
+    <section id="projects" class="bg-brandDark rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 pt-20 pb-32 relative z-30 select-none px-5 sm:px-8 md:px-10">
+      <div class="max-w-5xl mx-auto flex flex-col items-center">
+        
+        <div class="w-full text-center fade-in-on-scroll mb-16 sm:mb-20 md:mb-24" data-delay="0" data-y="40">
+          <h2 style="font-size: clamp(3rem, 12vw, 10rem);" class="hero-heading font-black uppercase leading-none tracking-tight text-center">
+            Project
+          </h2>
+        </div>
+
+        <!-- Project Stacking Cards -->
+        <div class="w-full flex flex-col gap-10 md:gap-20 relative">
+          
+          <!-- Card 1 -->
+          <div class="project-card-container flex items-start justify-center" style="top: calc(96px + 0px);">
+            <div class="project-card w-full bg-brandDark border-2 border-brandLight rounded-[40px] sm:rounded-[50px] md:rounded-[60px] p-4 sm:p-6 md:p-8 flex flex-col justify-between h-full shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] max-w-5xl mx-auto">
+              <!-- Header -->
+              <div class="flex justify-between items-center gap-4 border-b border-brandLight/15 pb-4 md:pb-5">
+                <div class="flex items-center gap-3 sm:gap-5">
+                  <span style="font-size: clamp(2rem, 5vw, 4.5rem);" class="font-black text-brandLight leading-none shrink-0">01</span>
+                  <div class="flex flex-col">
+                    <span class="text-brandLight/60 uppercase tracking-widest text-[9px] sm:text-[11px] font-light">Client</span>
+                    <h3 class="text-brandLight font-semibold uppercase text-xs sm:text-base md:text-lg">Nextlevel Studio</h3>
+                  </div>
+                </div>
+                <button class="rounded-full border-2 border-brandLight text-brandLight font-medium uppercase tracking-widest transition-colors duration-200 hover:bg-brandLight/10 active:scale-95 px-8 py-3 sm:px-10 sm:py-3.5 text-xs sm:text-sm md:text-base">Live Project</button>
+              </div>
+              <!-- Grid -->
+              <div class="grid grid-cols-10 gap-3 sm:gap-4 md:gap-5 flex-1 mt-4 sm:mt-5 md:mt-6 items-stretch overflow-hidden">
+                <div class="col-span-4 flex flex-col gap-3 sm:gap-4 md:gap-5 justify-between">
+                  <div style="height: clamp(130px, 16vw, 230px);" class="relative w-full rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-zinc-900 border border-white/5">
+                    <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.png&w=1280&q=85" class="w-full h-full object-cover pointer-events-none" referrerpolicy="no-referrer" />
+                  </div>
+                  <div style="height: clamp(160px, 22vw, 340px);" class="relative w-full rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-zinc-900 border border-white/5">
+                    <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055431_11d841fd-8b41-46a5-82e4-b04f2407a7d8.png&w=1280&q=85" class="w-full h-full object-cover pointer-events-none" referrerpolicy="no-referrer" />
+                  </div>
+                </div>
+                <div class="col-span-6 relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-zinc-900 border border-white/5">
+                  <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055451_e317bf2d-28d4-48cc-86b0-6f72f25b6327.png&w=1280&q=85" class="w-full h-full object-cover pointer-events-none" referrerpolicy="no-referrer" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="project-card-container flex items-start justify-center" style="top: calc(96px + 28px);">
+            <div class="project-card w-full bg-brandDark border-2 border-brandLight rounded-[40px] sm:rounded-[50px] md:rounded-[60px] p-4 sm:p-6 md:p-8 flex flex-col justify-between h-full shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] max-w-5xl mx-auto">
+              <!-- Header -->
+              <div class="flex justify-between items-center gap-4 border-b border-brandLight/15 pb-4 md:pb-5">
+                <div class="flex items-center gap-3 sm:gap-5">
+                  <span style="font-size: clamp(2rem, 5vw, 4.5rem);" class="font-black text-brandLight leading-none shrink-0">02</span>
+                  <div class="flex flex-col">
+                    <span class="text-brandLight/60 uppercase tracking-widest text-[9px] sm:text-[11px] font-light">Personal</span>
+                    <h3 class="text-brandLight font-semibold uppercase text-xs sm:text-base md:text-lg">Aura Brand Identity</h3>
+                  </div>
+                </div>
+                <button class="rounded-full border-2 border-brandLight text-brandLight font-medium uppercase tracking-widest transition-colors duration-200 hover:bg-brandLight/10 active:scale-95 px-8 py-3 sm:px-10 sm:py-3.5 text-xs sm:text-sm md:text-base">Live Project</button>
+              </div>
+              <!-- Grid -->
+              <div class="grid grid-cols-10 gap-3 sm:gap-4 md:gap-5 flex-1 mt-4 sm:mt-5 md:mt-6 items-stretch overflow-hidden">
+                <div class="col-span-4 flex flex-col gap-3 sm:gap-4 md:gap-5 justify-between">
+                  <div style="height: clamp(130px, 16vw, 230px);" class="relative w-full rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-zinc-900 border border-white/5">
+                    <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f.png&w=1280&q=85" class="w-full h-full object-cover pointer-events-none" referrerpolicy="no-referrer" />
+                  </div>
+                  <div style="height: clamp(160px, 22vw, 340px);" class="relative w-full rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-zinc-900 border border-white/5">
+                    <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055723_5ceda0b8-d9c2-4665-b2e3-83ba19ba76d1.png&w=1280&q=85" class="w-full h-full object-cover pointer-events-none" referrerpolicy="no-referrer" />
+                  </div>
+                </div>
+                <div class="col-span-6 relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-zinc-900 border border-white/5">
+                  <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.png&w=1280&q=85" class="w-full h-full object-cover pointer-events-none" referrerpolicy="no-referrer" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="project-card-container flex items-start justify-center" style="top: calc(96px + 56px);">
+            <div class="project-card w-full bg-brandDark border-2 border-brandLight rounded-[40px] sm:rounded-[50px] md:rounded-[60px] p-4 sm:p-6 md:p-8 flex flex-col justify-between h-full shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] max-w-5xl mx-auto">
+              <!-- Header -->
+              <div class="flex justify-between items-center gap-4 border-b border-brandLight/15 pb-4 md:pb-5">
+                <div class="flex items-center gap-3 sm:gap-5">
+                  <span style="font-size: clamp(2rem, 5vw, 4.5rem);" class="font-black text-brandLight leading-none shrink-0">03</span>
+                  <div class="flex flex-col">
+                    <span class="text-brandLight/60 uppercase tracking-widest text-[9px] sm:text-[11px] font-light">Client</span>
+                    <h3 class="text-brandLight font-semibold uppercase text-xs sm:text-base md:text-lg">Solaris Digital</h3>
+                  </div>
+                </div>
+                <button class="rounded-full border-2 border-brandLight text-brandLight font-medium uppercase tracking-widest transition-colors duration-200 hover:bg-brandLight/10 active:scale-95 px-8 py-3 sm:px-10 sm:py-3.5 text-xs sm:text-sm md:text-base">Live Project</button>
+              </div>
+              <!-- Grid -->
+              <div class="grid grid-cols-10 gap-3 sm:gap-4 md:gap-5 flex-1 mt-4 sm:mt-5 md:mt-6 items-stretch overflow-hidden">
+                <div class="col-span-4 flex flex-col gap-3 sm:gap-4 md:gap-5 justify-between">
+                  <div style="height: clamp(130px, 16vw, 230px);" class="relative w-full rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-zinc-900 border border-white/5">
+                    <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.png&w=1280&q=85" class="w-full h-full object-cover pointer-events-none" referrerpolicy="no-referrer" />
+                  </div>
+                  <div style="height: clamp(160px, 22vw, 340px);" class="relative w-full rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-zinc-900 border border-white/5">
+                    <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_060108_438f781a-9846-4dcc-89ab-c4e6cb830f5b.png&w=1280&q=85" class="w-full h-full object-cover pointer-events-none" referrerpolicy="no-referrer" />
+                  </div>
+                </div>
+                <div class="col-span-6 relative rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden bg-zinc-900 border border-white/5">
+                  <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055818_9d062121-ad7e-46b9-999a-1a6a692ef1ee.png&w=1280&q=85" class="w-full h-full object-cover pointer-events-none" referrerpolicy="no-referrer" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 6. CONTACT / FOOTER SECTION -->
+    <footer id="contact" class="bg-brandDark text-[#D7E2EA] pt-20 pb-12 px-6 md:px-10 border-t border-white/5 relative z-30 select-none overflow-hidden">
+      <div class="max-w-5xl mx-auto flex flex-col items-center gap-12">
+        
+        <!-- CTA -->
+        <div class="text-center flex flex-col items-center gap-4 fade-in-on-scroll" data-delay="0" data-y="30">
+          <span class="text-xs uppercase tracking-widest text-brandLight/50 font-medium">Let&apos;s collaborate</span>
+          <h2 class="hero-heading font-black uppercase text-4xl sm:text-6xl md:text-7xl tracking-tight leading-none text-center">Start a project</h2>
+          <p class="text-xs sm:text-sm text-brandLight/70 max-w-sm mt-2 text-center">Driven by crafting striking and unforgettable projects. Reach out via email.</p>
+        </div>
+
+        <!-- Email Link -->
+        <div class="w-full text-center fade-in-on-scroll" data-delay="0.15" data-y="30">
+          <a href="mailto:aniljacks3@gmail.com" class="group inline-flex items-center gap-3 text-lg sm:text-2xl md:text-3xl font-semibold hover:text-[#BBCCD7] transition-all duration-300">
+            <i data-lucide="mail" class="w-6 h-6 sm:w-8 sm:h-8 text-[#BBCCD7] group-hover:scale-110 transition-transform duration-300"></i>
+            <span class="border-b-2 border-transparent group-hover:border-[#BBCCD7] transition-all">aniljacks3@gmail.com</span>
+          </a>
+        </div>
+
+        <!-- Divider -->
+        <div class="w-full h-px bg-white/10"></div>
+
+        <!-- Footer Bottom Block -->
+        <div class="w-full flex flex-col sm:flex-row justify-between items-center gap-6 text-xs text-brandLight/50 font-light">
+          <!-- Copyright -->
+          <div class="flex flex-col items-center sm:items-start gap-1">
+            <span class="font-bold tracking-wider text-sm uppercase text-brandLight">Anil Jakkula</span>
+            <span>© <span id="year">2026</span> Anil Jakkula. All rights reserved.</span>
+          </div>
+
+          <!-- Socials -->
+          <div class="flex gap-5 items-center">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-200" aria-label="Instagram">
+              <i data-lucide="instagram" class="w-5 h-5"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-200" aria-label="Twitter">
+              <i data-lucide="twitter" class="w-5 h-5"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-200" aria-label="LinkedIn">
+              <i data-lucide="linkedin" class="w-5 h-5"></i>
+            </a>
+          </div>
+
+          <!-- Back to Top -->
+          <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="flex items-center gap-2 uppercase tracking-widest font-semibold hover:text-white transition-colors duration-200 text-[10px] cursor-pointer group">
+            Back to top
+            <i data-lucide="arrow-up" class="w-4 h-4 group-hover:-translate-y-1 transition-transform duration-200"></i>
+          </button>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- JavaScript logic -->
+  <script src="./app.js"></script>
+</body>
+</html>
