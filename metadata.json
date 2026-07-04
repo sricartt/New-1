@@ -1,0 +1,6 @@
+{
+  "name": "Anil Jakkula - 3D Creator Portfolio",
+  "description": "A high-fidelity 3D Creator portfolio landing page for Anil Jakkula featuring animations, horizontal scrolling marquees, interactive magnets, and a character-reveal about section.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,53 @@
+'use client';
+
+import { motion } from 'motion/react';
+import React from 'react';
+
+interface FadeInProps {
+  children: React.ReactNode;
+  delay?: number;
+  duration?: number;
+  x?: number;
+  y?: number;
+  as?: any;
+  className?: string;
+  id?: string;
+}
+
+export default function FadeIn({
+  children,
+  delay = 0,
+  duration = 0.7,
+  x = 0,
+  y = 30,
+  as = 'div',
+  className = '',
+  id,
+}: FadeInProps) {
+  const motionProps = {
+    id,
+    initial: { opacity: 0, x, y },
+    whileInView: { opacity: 1, x: 0, y: 0 },
+    viewport: { once: true, margin: "50px", amount: 0 },
+    transition: {
+      delay,
+      duration,
+      ease: [0.25, 0.1, 0.25, 1] as any,
+    },
+    className,
+  };
+
+  if (as === 'nav') {
+    return (
+      <motion.nav {...motionProps}>
+        {children}
+      </motion.nav>
+    );
+  }
+
+  return (
+    <motion.div {...motionProps}>
+      {children}
+    </motion.div>
+  );
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Anil Jakkula -- 3D Creator Portfolio",
+  "short_name": "Anil 3D",
+  "description": "Portfolio of Anil Jakkula, an experienced 3D Creator driven by crafting striking and unforgettable projects.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0C0C0C",
+  "theme_color": "#0C0C0C",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
